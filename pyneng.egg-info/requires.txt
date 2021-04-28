@@ -1,0 +1,5 @@
+Click
+pytest
+pytest-clarity
+pytest-json-report
+six
