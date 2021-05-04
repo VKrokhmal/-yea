@@ -49,17 +49,21 @@ switchport trunk encapsulation dot1q
 switchport mode trunk
 switchport trunk allowed vlan 2,3,4,5
 """
+templates = {
+    "access": [
+        "switchport mode access",
+        "switchport access vlan {}",
+        "switchport nonegotiate",
+        "spanning-tree portfast",
+        "spanning-tree bpduguard enable"],
+    "trunk": [
+        "switchport trunk encapsulation dot1q",
+        "switchport mode trunk",
+        "switchport trunk allowed vlan {}"]
+}
 
-access_template = [
-    "switchport mode access",
-    "switchport access vlan {}",
-    "switchport nonegotiate",
-    "spanning-tree portfast",
-    "spanning-tree bpduguard enable",
-]
-
-trunk_template = [
-    "switchport trunk encapsulation dot1q",
-    "switchport mode trunk",
-    "switchport trunk allowed vlan {}",
-]
+mode = input("Please enter the int mode (access/trunk):" )
+itype = input("Please enter the type and number of interface:" )
+vlan = input("Please enter the vlan's number:" )
+print(f"interface {itype}")
+print(("\n".join(templates[mode])).format(vlan))

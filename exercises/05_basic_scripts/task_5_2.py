@@ -24,3 +24,18 @@ Out[1]: '11111111111111111111111111110000'
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+inp = input("Please enter your ip and mask in format 'x.x.x.x/x':" )
+inp = inp.split('/')
+ip = inp[0].split('.')
+mask = "1" * (int(inp[1])) + '0' * (32 - int(inp[1]))
+out = f"""
+Network:
+{int(ip[0]):<8}  {int(ip[1]):<8}  {int(ip[2]):<8}  {int(ip[3]):<8}
+{int(ip[0]):08b}  {int(ip[1]):08b}  {int(ip[2]):08b}  {int(ip[3]):08b}
+Mask:
+/{int(inp[1])}
+{int(mask[0:8], 2):<8}  {int(mask[8:16], 2):<8}  {int(mask[16:24], 2):<8}  {int(mask[24::], 2):<8}
+{mask[0:8]:<8}  {mask[8:16]:<8}  {mask[16:24]:<8}  {mask[24::]:<8}
+"""
+
+print(out)

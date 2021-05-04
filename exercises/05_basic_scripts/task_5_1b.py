@@ -50,3 +50,7 @@ london_co = {
         "routing": True,
     },
 }
+device = input("Please enter your device: ")
+param_list = ', '.join(london_co[device].keys())
+param = input(f"Plese choose your param ( {param_list} ): ")
+print(london_co[device][param])

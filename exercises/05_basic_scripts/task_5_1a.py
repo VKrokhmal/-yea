@@ -44,3 +44,8 @@ london_co = {
         "routing": True,
     },
 }
+
+device = input("Please enter your device: ")
+#print(london_co[device])
+param = input("Pleae enter your param: ")
+print(london_co[device][param])

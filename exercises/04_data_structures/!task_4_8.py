@@ -26,3 +26,11 @@
 """
 
 ip = "192.168.3.1"
+lip = ip.split('.')
+print(lip)
+out = f"""
+{lip[0]:10}  {lip[1]:10}  {lip[2]:10}  {lip[3]:10}
+{bin(int(lip[0]))[2::]:10}  {bin(int(lip[1]))[2::]:10}  {bin(int(lip[2]))[2::]:10}  {bin(int(lip[3]))[2::]:10}
+
+"""
+print(out)
