@@ -43,6 +43,17 @@ def parse_cdp_neighbors(command_output):
     и с файлами и с выводом с оборудования.
     Плюс учимся работать с таким выводом.
     """
+    result = {}
+    for i in command_output.split('\n'):
+        row = i.strip()
+        colums = row.split()
+        if '>' in row:
+            hostname = row.split('>')[0]
+        elif len(colums) >= 5 and colums[3].isdigit():
+            dev_id, q2, q3, *other, q4, q5 = colums
+
+            result[(hostname, q2 + q3)] = (dev_id, q4 + q5)
+    return result
 
 
 if __name__ == "__main__":
